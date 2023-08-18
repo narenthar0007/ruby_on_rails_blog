@@ -1,0 +1,8 @@
+<%= naren.body%><br> 
+<%= time_ago_in_words(naren.created_at)%><br><br> 
+
+<% if (current_user.id == naren.user_id)%>
+    <%= button_to "delete" ,[naren.blog_post,naren],method: :delete , data:{turbo_confirm: "r u sure"}  %>
+    <br>
+    <hr>
+<%end%>

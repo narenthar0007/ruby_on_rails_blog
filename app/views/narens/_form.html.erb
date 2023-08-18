@@ -1,0 +1,16 @@
+<%= form_for ([@blog_post, @blog_post.narens.build]) do |f| %>
+    <p>
+        <%=f.label :body%></p><br>
+    <p>
+        <%=f.text_area :body%>
+    </p>
+    <p>
+        
+        <% f.label :user_id,id: :blog_post_user_id ,type: :hidden%>
+        <%= f.number_field :user_id , value: current_user.id ,type: :hidden %>
+    </p>
+    <br>
+    <p>
+    <%= f.submit "comment"  %>
+    </p><br>
+<%end%>

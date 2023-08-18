@@ -1,0 +1,119 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+body{
+    background-color: khaki;
+}
+button{
+    background-color: khaki;
+}
+.fa{
+    cursor: pointer;
+    user-select: none;
+ }
+.fa.fa-thumbs-up{
+    color: rgba(0, 128, 0, 0.655);
+    border: none;
+    background-color: white;
+}
+.fa.fa-thumbs-down{
+    color: rgba(232, 36, 36, 0.655);
+    border: none;
+    background-color: white;
+}
+
+.i{
+    height: 300px;
+    width: 300px;
+}
+.ii{
+    height: 30px;
+    width: 30px;
+}
+body{
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    
+}
+button{
+   
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+
+
+
+/* 
+a{
+    color: #27a7cb;
+}
+a:hover{
+    background: #fff;
+    color: #000;
+    transition: .5s;
+}
+.body1{
+    margin: 0;
+    margin-left: 400px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}
+.a{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.a .b{
+    position: relative;
+    width: 300px;
+    height: 950px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.a .b:before{
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100%;
+    height: 100%;
+    border: 4px solid #ffffff;
+    background: #000;
+    filter: url(#wavy);
+}
+.a .b:hover{
+    color: #000;
+}
+.a .b:hover:before{
+    background: #fff;
+    color: #000;
+    transition: .5s;
+}
+.a .b .c{
+    position: absolute;
+    padding: 20px;
+    text-align: center;
+    transition: .5s;
+}  */

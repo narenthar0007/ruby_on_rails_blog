@@ -1,0 +1,92 @@
+<table style="background-color:rgba(0, 1, 0, 0.44);color:beige; width:1400px">
+                <th>
+                    <i class="fa fa-arrow-left"></i><%= link_to "back", :back %> 
+    
+                </th>
+                <th>
+                        <h5><%=link_to "Home", root_path%></h5>
+                </th>
+                
+                <th>
+                        <h5><%= link_to "New Blog",new_blog_post_path %></h5>
+                </th>
+                <th>
+                        <h5><%= link_to "Profile ", edit_user_registration_path %></h5>
+                </th>
+                <th>
+                        <%if !(user_signed_in?) %> 
+                        <h5><%= link_to "Log In", new_user_session_path%></h5>
+                        <%end%>
+                </th>
+                <th>
+                        <%if (user_signed_in?) %> 
+                        <h5><%= link_to "My blog",my_blog_path %></h5>
+                        
+                        <%end%>
+                        
+                </th>
+                <th>
+                        <h5><%= link_to "All Blogs", blog_post_home_path%></h5>
+                </th>
+                <th>
+                        <%if (user_signed_in?) %>
+                        <h5><%= link_to "Liked Blog",liked_path %></h5>
+                        <%end%>
+
+                </th>
+                <th>
+                        <h5><%= link_to "Trending Blogs", treanding_blog_path%></h5>
+                </th>
+                <th>
+                        <%if (user_signed_in?) %> 
+                        <h5><%= button_to "log out " , destroy_user_session_path ,method: :delete, data: {turbo_confirm: "are you sure"}%></h5>
+                        <%end%>
+                </th>
+                <th>
+                        <h5> <form class="form-inline my-2 my-lg-0" action="/search" >
+                                <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" method="get" aria-label="Search" >
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Blog</button>
+                        </form></h5>
+                </th>
+        </table>
+
+<div>
+  <div>
+    <img  class = "i"src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Open_book_nae_02.svg/2560px-Open_book_nae_02.svg.png"
+    " alt="">
+<h1 class="display-4">Title :<%=@blog_post.title%></h1>
+<h6>Blog Body:</h6>
+<p><%=@blog_post.body%></p><p>category: <%=@blog_post.category%></p><hr>
+<p class="b_secondaryText callout_vis">Blog ID : <%=@blog_post.id%></p>
+<p>user id: <%=@blog_post.user_id%></p>
+<% if user_signed_in?%>
+  <% if @blog_post.user_id == current_user.id %>
+    <h3><%= link_to "edit", edit_blog_post_path %></h3>  
+    
+  <%end%>  
+  <p> Views :<%= @blog_post.upvote %></p>
+  <%# only admin can add upvote %>
+  
+  <%= @blog_post.liks.count %> Likes 
+        <table>
+        <%if current_user.liks.find_by(blog_post: @blog_post).nil? %>        
+        <th style="background-color: khaki;"><%= button_to "Likes" ,liks_path, params:{lik:{blog_post_id: @blog_post.id}}, method: :blog_post,class:"fa fa-thumbs-up"%></th>
+        <%else%>
+        <th style="background-color: khaki;"><%= button_to "Unlike" ,del_lik_path(@blog_post.id),  method: :delete,class:"fa fa-thumbs-down" %></th>
+        <%end%>
+        </table>
+  <%end%>
+  </div>
+</div>
+<%# <%= @blog_post.view %>
+<%# <%= button_to "view" , upvote_view_path(@blog_post) ,method: :put %>  
+</div>
+</div>
+<hr>
+  <h2>No.of  comments :<%= @blog_post.narens.count%> </h2>
+  <p><%= render @blog_post.narens %></p>
+  <hr>
+  <h3>Add New Comments</h3>
+  <%=render "narens/form"%>
+</div>
+<%= button_to "Home" , root_path(@blog_post) ,method: :put  %>

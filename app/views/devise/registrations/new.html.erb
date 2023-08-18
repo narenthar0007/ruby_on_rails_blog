@@ -1,0 +1,70 @@
+<h2>Sign up</h2>
+<table style="background-color:rgba(0, 1, 0, 0.44);;color:beige; width:1400px">
+                <th>
+                    <i class="fa fa-arrow-left"></i><%= link_to "back", :back %> 
+    
+                </th>
+                <th>
+                        <h5><%=link_to "Home", root_path%></h5>
+                </th>
+                <th>    <%if (user_signed_in?) %> 
+                        <h5><%= button_to "log out " , destroy_user_session_path ,method: :delete, data: {turbo_confirm: "are you sure"}%></h5>
+                        <%end%>
+                </th>
+                <th>
+                        <h5><%= link_to "New Blog",new_blog_post_path %></h5>
+                </th>
+                <th>
+                       <%if (user_signed_in?) %> 
+                        <h5><%= link_to "My blog",my_blog_path %></h5>
+                        <%end%>
+                </th>
+                <th>
+                        <h5><%= link_to "Profile ", edit_user_registration_path %></h5>
+                </th>
+                <th>
+                        <%if !(user_signed_in?) %>
+                        <h5><%= link_to "Log In", new_user_session_path%></h5>
+                        <%end%>
+                </th>
+                <th>
+                        <h5><%= link_to "All Blogs", blog_post_home_path%></h5>
+                </th>
+                <th>
+                        <h5><%= link_to "Treanding Blogs", treanding_blog_path%></h5>
+                </th>
+                <th>
+                        <h5> <form class="form-inline my-2 my-lg-0" action="/search" >
+                                <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" method="get" aria-label="Search" >
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Blog</button>
+                        </form></h5>
+                </th>
+        </table>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

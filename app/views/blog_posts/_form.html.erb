@@ -1,0 +1,26 @@
+<%= form_with model: @blog_post do |form| %>
+<%if form.object.errors.any?%>
+<% form.object.errors.full_messages.each do |message| %>
+<h4 style="color:red;"> <%=message%> </h4>
+<%end%>
+<%end%>
+    
+    <div>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+    </div>
+    <div>   
+        <%= form.label :body %>
+        <%= form.text_area :body %>
+    </div>
+    <div>   
+        <% form.label :user_id,id: :blog_post_user_id ,type: :hidden%>
+        <%= form.number_field :user_id , value: current_user.id ,type: :hidden %>
+    </div>
+    <%= form.label :category %>
+    <%= form.select(:category, options_for_select([["General","General"],["Sports","Sports"],["Entertainment","Entertainment"],["Tech","Tech"]])) %>
+    <div>   
+        <%= form.button  %>
+    </div>
+    
+<% end %>

@@ -1,0 +1,2 @@
+module CommentTablesHelper
+end
